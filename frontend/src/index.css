@@ -1,0 +1,389 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prosto+One&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
+  color: hsl(0, 0%, 7%);
+  line-height: 1.2;
+}
+
+
+body {
+  scroll-behavior: smooth;
+}
+:root{
+  --primary-color-100:rgba(244, 235, 255, 1);
+  --primary-color-200:rgb(210, 210, 210);
+  --primary-color-800:rgba(105, 65, 198, 1);
+  --primary-color-900:rgba(70, 54, 113, 1);
+  --gery-60:rgba(29, 41, 57, 1);
+  --grey-70: rgba(71, 84, 103, 1);
+  --grey-80: rgba(52, 64, 84, 1);
+  --grey-90:rgba(29, 41, 57, 1);
+}
+.mobile-navbar-bg{
+  background-color:  rgb(32, 24, 52);
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+.faq-section{
+  padding-top:5rem;
+}
+.faq-section h1{
+    font-size:1.9rem;
+}
+.theForm .error{
+   color:red;
+   font-style: italic;
+   font-size: 13px;
+} 
+.history tr{
+  color:white
+}
+.history tr:nth-child(even){
+  background: #EFF4FF;
+}
+/* Shadow */
+.thePlans p{
+  font-size: 0.8rem;
+  text-align: start;
+}
+.first-part{
+  box-shadow: 10px 10px rgb(171, 151, 225);
+}
+.second-part{
+  box-shadow: 10px 10px rgb(243, 189, 189);
+  
+}
+/* This is used to style the input with type number */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+/* Hide number input arrows in Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+@media screen and (max-width: 760px) {
+  .faq-section{
+    padding-top:4rem;
+  }
+  .faq-section h1{
+    font-size:1.3rem;
+}
+.banner h1{
+  text-align: center;
+}
+.landingPageHeader p{
+  text-align: center;
+}
+.the-questions-section{
+  padding:0 1rem;
+}
+.banner-spacing,
+.nav-spacing{
+  padding: 0 1rem;
+}
+}
+/*==============================AUTH DASHBOARD==========================================*/
+.leftSide{
+  background-image: url('./assets/images/auth-background.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.rightSide{
+  background-color: rgba(255, 255, 255, 1);
+}
+.active-bg{
+   background-color: rgba(249, 245, 255, 1);  
+   border-color: rgba(105, 65, 198, 1);
+}
+.button-texts{
+  color:rgba(0, 0, 0, 1)
+}
+.googleBtn{
+  background-color: rgba(214, 187, 251, 0.202);
+  color:rgba(29, 41, 57, 1);
+  border-color:rgba(214, 187, 251, 0.664);
+  border-width: 1px;
+}
+.line-color{
+  background-color: #EAECF0;
+}
+.input-border{
+  border-width: 1px;
+}
+input:focus{
+  border-color: rgba(105, 65, 198, 0.36);
+  outline: none;
+}
+.submit-btn{
+  background-color: rgba(249, 250, 251, 1);
+  color:rgba(208, 213, 221, 1)
+}
+.account{
+  color: rgba(66, 66, 66, 1);
+}
+.account a{
+  color: rgba(66, 66, 66, 1);
+}
+.sign-up-btn{
+  background-color: rgba(105, 65, 198, 1);
+  color:rgba(252, 252, 253, 1)
+}
+.email-header{
+  color:rgba(1, 33, 105, 1)
+}
+.email-Verification-Text{
+  color:rgba(71, 84, 103, 1);
+}
+.forget-password{
+  color:rgba(105, 65, 198, 1);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+.forget-password p{
+  color:rgba(71, 84, 103, 0.844);
+}
+.congratulations-Modal-text{
+  color:rgba(52, 64, 84, 1)
+}
+.login-dashboard{
+  color:#fff;
+  background-color: rgba(1, 33, 105, 1);
+}
+/* ==========================WAITLIST========================= */
+.theNav{
+  background: linear-gradient(to right, 
+  rgb(23, 10, 61) 1%, 
+  rgba(70, 54, 113, 1) 90%);
+}
+.navItems a{
+  color:rgb(227, 227, 227);
+  text-decoration:none
+}
+.navItems a{
+  position: relative;
+  /* background-color: red; */
+  /* display: flex;
+  justify-content: center; */
+}
+/* .navItems a::after{
+  position: absolute;
+   content:"";
+   background-color: rgba(249, 153, 26, 1);
+   width:0;
+   display: flex;
+   height:2px;
+   left:0;
+   bottom:-5px;
+   transform: translateX(-50%);
+} */
+.navItems a:hover{
+  color:rgb(227, 227, 227);
+}
+.navItems a.active::after{
+   width:25px;
+   left:50%;
+   transition:width .6s ease-in;
+}
+.navItemsForMobile a{
+  color:rgba(71, 84, 103, 1)
+}
+.navItemsForMobile a:hover{
+  color:rgba(71, 84, 103, 1)
+}
+.navItemsForMobile a.active{
+   font-weight: 600;
+   color:rgba(29, 41, 57, 1)
+}
+.icon{
+   color: #EFF4FF;
+}
+.waitlist-bg{
+  background: linear-gradient(to right, 
+  rgb(23, 10, 61) 1%, 
+  rgba(70, 54, 113, 1) 90%);
+}
+.waitlist-bg button{
+  background-color:rgba(105, 65, 198, 1)
+}
+.waitlist-header-h1 span{
+  color: rgba(249, 153, 26, 1);
+}
+/* ====================================HEALTH PLANS================================= */
+.healthPlans{
+  background-image: url("./assets/images/Nurse-Image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.healthPlans h1{
+  color:var(--primary-color-900)
+}
+.healthPlans p{
+  color:var(--grey-80)
+}
+.buttons .color-btn, .plan-btn{
+  background-color: var(--primary-color-800);
+}
+.buttons .gray-color-btn{
+  background-color: var(--primary-color-200);
+  color: var(--grey-70);
+  /* box-shadow: 3px 3px 3px 3px var(--grey-70); */
+}
+.duration-btn{
+  background-color: rgba(248, 226, 230, 0.881);
+}
+.duration-text-header-active{
+  color: rgba(219, 132, 0, 1);
+}
+.duration-text-header-notactive{
+  color:rgba(102, 112, 133, 1)
+}
+.duration-text-subheader,.small-quaterly{
+  color: var(--grey-70)
+}
+.price-text{
+  color:rgba(70, 54, 113, 1)
+}
+.plan-hr{
+  color: rgba(208, 213, 221, 1);
+}
+.plan-title{
+  color:var(--primary-color-900)
+}
+.select-btn{
+  background-color: transparent;
+  border-width:1px;
+  border-color: var(--primary-color-800);
+  color:var(--primary-color-800);
+}
+.counter-btn .btn-1{
+  background-color:rgba(127, 86, 217, 0.207)
+}
+.counter-btn .btn-2{
+  background-color:rgba(127, 86, 217, 1)
+}
+.special-plan-bg{
+  background-color: #FCFAFF;
+}
+.how-it-works{
+  background-color: rgba(246, 249, 252, 1);
+}
+.how-it-works h1{
+  color:var(--primary-color-900);
+}
+.how-it-works p{
+  color:rgba(102, 105, 127, 1)
+}
+.links .active{
+  color:var(--grey-90);
+  font-weight: 600;
+}
+.links .notactive{
+  color:var(--grey-70);
+  font-weight: 400;
+}
+.faq-question{
+  color:var(--grey-90)
+}
+.faq-answer, .plan-number{
+  color:var(--grey-80)
+}
+
+.landing-banner_gradient {
+  background: linear-gradient(to bottom right, rgb(23, 10, 61) 0%, rgba(70, 54, 113, 1) 80%)
+}
+
+.swiper-pagination-bullet{
+  background:#fff !important;
+  opacity: 0.5 !important;
+}
+
+.swiper-pagination-bullet-active{
+  background: #fff!important;
+    opacity: 1 !important;
+}
+
+table tr td,table tr th {
+  border-bottom-width: 1px;
+}
+
+table tr:last-child td:last-child{
+  border-bottom-right-radius: 10px;
+}
+
+table tr:last-child td:first-child {
+  border-bottom-left-radius: 10px;
+}
+
+.google .ball-beat>div{
+background-color: #1D2939 !important;
+}
+
+.modal-content * {
+  margin-top: 1rem;
+  line-height: 1.5rem;
+}
+
+.poppins-regular {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.prosto-one-regular {
+  font-family: "Prosto One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.pag_item {
+  @apply inline-block py-[10px] px-[14px] text-[12px] rounded-[5px]
+}
+
+.select-scroll::-webkit-scrollbar{
+  @apply w-[3px] h-[3px]
+}
+
+.ext_nav_link{
+  @apply hover:after:bg-[#F9991A] after:absolute after:content-[''] after:w-[26px] after:h-[3px] after:mt-[22px] after:left-[50%] after:translate-x-[-50%] 
+}
+
+
+@media (max-width: 1000px) {
+  .healthPlans{
+    background-color: #f3f1ea;
+    background-image: url("./assets/images/Nurse-Image.jpg");
+    background-position: 44% -5%;
+    background-size: 370%;
+  }
+}
+/* ============================================CHECKOUT======================================== */
+.plan-check-out, .condition-check-out{
+  background-image: url("./assets/images/CheckOutBg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.condition-checkout-bg{
+  background-image: url("./assets/images/condition-checkout-bg.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: center;
+}
+

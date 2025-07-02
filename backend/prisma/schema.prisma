@@ -1,0 +1,185 @@
+datasource db {
+    provider = "mongodb"
+    url      = env("DATABASE_URL")
+}
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+model Token {
+    id        String  @id @default(auto()) @map("_id") @db.ObjectId
+    token     String  @unique
+    expire_at String?
+    user      User    @relation(fields: [userId], references: [id])
+    userId    String  @db.ObjectId
+    data      String?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model User {
+    id               String  @id @default(auto()) @map("_id") @db.ObjectId
+    first_name       String
+    last_name        String
+    email            String  @unique
+    signup_method    String
+    whatsapp_number  String?
+    completed_signup Boolean @default(false)
+    email_verified   Boolean @default(false)
+    otp              String?
+    password         String?
+
+    campus       Campus?     @relation(fields: [campusId], references: [id])
+    campusId     String?     @db.ObjectId
+    university   University? @relation(fields: [universityId], references: [id])
+    universityId String?     @db.ObjectId
+    state        State?      @relation(fields: [stateId], references: [id])
+    stateId      String?     @db.ObjectId
+    country      Country?    @relation(fields: [countryId], references: [id])
+    countryId    String?     @db.ObjectId
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    posts     Post[]
+    Token     Token[]
+    Activity  Activity[]
+    PostImage PostImage[]
+}
+
+model Post {
+    id           String @id @default(auto()) @map("_id") @db.ObjectId
+    title        String
+    description  String
+    price        Float  @default(0.0)
+    payment_type String @default("ONE_TIME")
+
+    user   User   @relation(fields: [userId], references: [id])
+    userId String @db.ObjectId
+
+    category   Category? @relation(fields: [categoryId], references: [id])
+    categoryId String?   @db.ObjectId
+
+    campus   Campus? @relation(fields: [campusId], references: [id])
+    campusId String? @db.ObjectId
+
+    university   University? @relation(fields: [universityId], references: [id])
+    universityId String?     @db.ObjectId
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    campus_posts CampusPost[]
+    post_images  PostImage[]
+}
+
+model Activity {
+    id          String  @id @default(auto()) @map("_id") @db.ObjectId
+    type        String
+    description String
+    data        String?
+
+    user   User   @relation(fields: [userId], references: [id])
+    userId String @db.ObjectId
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model PostImage {
+    id    String @id @default(auto()) @map("_id") @db.ObjectId
+    image String
+
+    post   Post?   @relation(fields: [postId], references: [id])
+    postId String? @db.ObjectId
+
+    user   User?   @relation(fields: [userId], references: [id])
+    userId String? @db.ObjectId
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Category {
+    id    String @id @default(auto()) @map("_id") @db.ObjectId
+    name  String
+    ident String @unique
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    posts Post[]
+}
+
+model CampusPost {
+    id       String @id @default(auto()) @map("_id") @db.ObjectId
+    campus   Campus @relation(fields: [campusId], references: [id])
+    campusId String @db.ObjectId
+    post     Post   @relation(fields: [postId], references: [id])
+    postId   String @db.ObjectId
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model Campus {
+    id   String @id @default(auto()) @map("_id") @db.ObjectId
+    name String
+
+    university   University? @relation(fields: [universityId], references: [id])
+    universityId String?     @db.ObjectId
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    campus_posts CampusPost[]
+    user         User[]
+    Post         Post[]
+}
+
+model State {
+    id   String @id @default(auto()) @map("_id") @db.ObjectId
+    name String @unique
+
+    country   Country? @relation(fields: [countryId], references: [id])
+    countryId String?  @db.ObjectId
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    universities University[]
+    users        User[]
+}
+
+model University {
+    id         String   @id @default(auto()) @map("_id") @db.ObjectId
+    name       String   @unique
+    icon       String?
+    short_name String   @unique
+    state      State?   @relation(fields: [stateId], references: [id])
+    stateId    String?  @db.ObjectId
+    country    Country? @relation(fields: [countryId], references: [id])
+    countryId  String?  @db.ObjectId
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    campuses Campus[]
+    user     User[]
+    Post     Post[]
+}
+
+model Country {
+    id         String @id @default(auto()) @map("_id") @db.ObjectId
+    name       String @unique
+    short_name String @unique
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    states       State[]
+    universities University[]
+    users        User[]
+}
